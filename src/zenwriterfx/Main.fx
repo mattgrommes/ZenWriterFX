@@ -25,7 +25,7 @@ import zen.like.MenuPanel;
 var scene: Scene;
 def theme = Theme.DEFAULT;
 def keyTyped = function(): Void {
-    theme.clickSoundMediaView.mediaPlayer.play();
+    theme.playClick();
 }
 def editor = TextEditor.create(theme.font, theme.textColor, theme.selectionColor, theme.selectionTextColor, keyTyped);
 def editorNode: SwingComponent = editor.node as SwingComponent;
