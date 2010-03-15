@@ -47,17 +47,18 @@ var height: Number = bind stage.height on replace {
     menuPanel.height = height * theme.panelHeight;
 };
 
-var bgplayer = MediaPlayer {
-                media : Media {
-                    source : "file:///home/matt/workspace/ZenWriterFX/src/zenwriterfx/sounds/background/OceanWave.wav"
-                }
-                autoPlay:true
-                repeatCount: MediaPlayer.REPEAT_FOREVER
-                onError : function(e) {
-                    println(e);
-                }
+def bgSound = Utilities.makeLocal("{__DIR__}sounds/background/OceanWave.wav");
 
-            };
+var bgplayer = MediaPlayer {
+    media : Media {
+        source : bgSound;
+    }
+    autoPlay:true
+    repeatCount: MediaPlayer.REPEAT_FOREVER
+    onError : function(e) {
+        println(e);
+    }
+};
 
 def stage: Stage = Stage {
     fullScreen: true
