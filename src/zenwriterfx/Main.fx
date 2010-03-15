@@ -15,6 +15,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.image.Image;
 import zen.like.TextEditor;
 import javafx.ext.swing.SwingComponent;
+import javafx.scene.media.MediaView;
 
 /**
  * @author dick
@@ -39,6 +40,18 @@ var height: Number = bind stage.height on replace {
     editorNode.translateY = height * theme.beginY;
 };
 
+var bgplayer = MediaPlayer {
+                media : Media {
+                    source : "file:///home/matt/workspace/ZenWriterFX/src/zenwriterfx/sounds/background/OceanWave.wav"
+                }
+                autoPlay:true
+                repeatCount: MediaPlayer.REPEAT_FOREVER
+                onError : function(e) {
+                    println(e.message);
+                }
+
+            };
+
 def stage: Stage = Stage {
     fullScreen: true
     title: "ZenWriterFX"
@@ -52,8 +65,7 @@ def stage: Stage = Stage {
                 }
                 fitWidth: bind width
                 fitHeight: bind height
-            }
-
+            },
             editorNode
         ]
         fill: theme.fill
@@ -61,17 +73,6 @@ def stage: Stage = Stage {
 
 }
 
-MediaPlayer {
-    media : Media {
-        source : "{__DIR__}sounds/background/OceanWave.wav"
-    }
-    autoPlay:true
-    repeatCount: MediaPlayer.REPEAT_FOREVER
-    onError : function(e) {
-        println(e.message);
-    }
-
-}.play();
-
+bgplayer.play();
 
 editorNode.requestFocus();
