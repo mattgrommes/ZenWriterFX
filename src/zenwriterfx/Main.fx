@@ -22,8 +22,12 @@ import javafx.ext.swing.SwingComponent;
 
 var scene: Scene;
 def theme = Theme.DEFAULT;
-def editor = TextEditor.create(theme.font, theme.textColor, theme.selectionColor, theme.selectionTextColor);
+def keyTyped = function(): Void {
+    theme.clickSoundMediaView.mediaPlayer.play();
+}
+def editor = TextEditor.create(theme.font, theme.textColor, theme.selectionColor, theme.selectionTextColor, keyTyped);
 def editorNode: SwingComponent = editor.node as SwingComponent;
+
 editorNode.focusTraversable = true;
 
 var width: Number = bind stage.width on replace {
@@ -44,7 +48,7 @@ def stage: Stage = Stage {
                 opacity: theme.opacity
                 image: Image {
                     backgroundLoading: true
-                    url: theme.url
+                    url: theme.backgroundImage
                 }
                 fitWidth: bind width
                 fitHeight: bind height
