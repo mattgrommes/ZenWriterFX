@@ -36,7 +36,7 @@ Stage {
 
 }
 
-var tri : MediaPlayer = MediaPlayer {
+MediaPlayer {
     media : Media {
         source : "{__DIR__}Triangle.wav"
     }
