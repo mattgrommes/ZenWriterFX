@@ -12,6 +12,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.media.MediaView;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.Media;
+import java.util.Random;
 
 public class Theme {
     public-init var name: String;
@@ -47,8 +48,11 @@ public class Theme {
     }
 
     public function playClick() {
-        mediaPlayer.currentTime = 0s;
-        mediaPlayer.play();
+        if (clickMedia != null) {
+            mediaPlayer.currentTime = 0s;
+            mediaPlayer.volume = new Random().nextFloat()*0.5 + 0.5;
+            mediaPlayer.play();
+        }
     }
 }
 
