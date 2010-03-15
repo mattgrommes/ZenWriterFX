@@ -3,6 +3,10 @@
 nbproject/private/*
 dist/*
 <<<<<<< HEAD:.gitignore
+<<<<<<< HEAD:.gitignore
 =======
 build/*
 >>>>>>> 053b55a2625ae88a8fa9c9eaa511f737bb56cf98:.gitignore
+=======
+build/*
+>>>>>>> 567a49c8b9bf57f8e041d82cd242edb14bd6fdfc:.gitignore
