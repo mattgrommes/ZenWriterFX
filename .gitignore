@@ -2,3 +2,7 @@
 *.class
 nbproject/private/*
 dist/*
+<<<<<<< HEAD:.gitignore
+=======
+build/*
+>>>>>>> 053b55a2625ae88a8fa9c9eaa511f737bb56cf98:.gitignore

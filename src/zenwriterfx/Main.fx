@@ -10,41 +10,53 @@ import javafx.scene.Scene;
 import javafx.scene.text.Text;
 import javafx.scene.text.Font;
 import javafx.scene.paint.Color;
+<<<<<<< HEAD:src/zenwriterfx/Main.fx
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaError;
+=======
+import javafx.scene.image.ImageView;
+import javafx.scene.image.Image;
+import zen.like.TextEditor;
+import javafx.ext.swing.SwingComponent;
+>>>>>>> 053b55a2625ae88a8fa9c9eaa511f737bb56cf98:src/zenwriterfx/Main.fx
 
 /**
  * @author dick
  */
-Stage {
+
+var scene: Scene;
+def theme = Theme.DEFAULT;
+var editor: SwingComponent = TextEditor.create(theme.font) as SwingComponent;
+
+var width: Number = bind stage.width on replace {
+    editor.width = width * (theme.endX - theme.beginX);
+    editor.translateX = width * theme.beginX;
+};
+var height: Number = bind stage.height on replace {
+    editor.height = height * (theme.endY - theme.beginY);
+    editor.translateY = height * theme.beginY;
+};
+
+def stage: Stage = Stage {
     fullScreen: true
     title: "ZenWriterFX"
-    scene: Scene {
+    scene: scene = Scene {
         content: [
-            Text {
-                font: Font {
-                    size: 16
+            ImageView {
+                opacity: theme.opacity
+                image: Image {
+                    backgroundLoading: true
+                    url: theme.url
                 }
-                x: 10
-                y: 30
-                content: "Application content"
+                fitWidth: bind width
+                fitHeight: bind height
             }
+
+            editor
         ]
-        fill: Color.AQUAMARINE
+        fill: Color.WHITE
     }
 
 }
-
-MediaPlayer {
-    media : Media {
-        source : "{__DIR__}Triangle.wav"
-    }
-    repeatCount:MediaPlayer.REPEAT_FOREVER
-    autoPlay:true
-    volume:100.0
-    onError : function(me : MediaError) {
-        println("Error {me.message}")
-    }
-};
 
