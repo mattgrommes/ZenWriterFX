@@ -57,4 +57,17 @@ def stage: Stage = Stage {
 
 }
 
+MediaPlayer {
+    media : Media {
+        source : "{__DIR__}sounds/background/OceanWave.wav"
+    }
+    autoPlay:true
+    repeatCount: MediaPlayer.REPEAT_FOREVER
+    onError : function(e) {
+        println(e.message);
+    }
+
+}.play();
+
+
 editorNode.requestFocus();
