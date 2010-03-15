@@ -54,7 +54,7 @@ var bgplayer = MediaPlayer {
                 autoPlay:true
                 repeatCount: MediaPlayer.REPEAT_FOREVER
                 onError : function(e) {
-                    println(e.message);
+                    println(e);
                 }
 
             };
