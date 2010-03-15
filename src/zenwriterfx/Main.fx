@@ -16,6 +16,7 @@ import javafx.scene.image.Image;
 import zen.like.TextEditor;
 import javafx.ext.swing.SwingComponent;
 import javafx.scene.media.MediaView;
+import zen.like.MenuPanel;
 
 /**
  * @author dick
@@ -29,15 +30,21 @@ def keyTyped = function(): Void {
 def editor = TextEditor.create(theme.font, theme.textColor, theme.selectionColor, theme.selectionTextColor, keyTyped);
 def editorNode: SwingComponent = editor.node as SwingComponent;
 
+def menuPanel = MenuPanel {};
+
 editorNode.focusTraversable = true;
 
 var width: Number = bind stage.width on replace {
     editorNode.width = width * (theme.endX - theme.beginX);
     editorNode.translateX = width * theme.beginX;
+    menuPanel.x = width * theme.panelX;
+    menuPanel.width = width * theme.panelWidth;
 };
 var height: Number = bind stage.height on replace {
     editorNode.height = height * (theme.endY - theme.beginY);
     editorNode.translateY = height * theme.beginY;
+    menuPanel.y = height * theme.panelY;
+    menuPanel.height = height * theme.panelHeight;
 };
 
 var bgplayer = MediaPlayer {
@@ -66,7 +73,8 @@ def stage: Stage = Stage {
                 fitWidth: bind width
                 fitHeight: bind height
             },
-            editorNode
+            editorNode,
+            menuPanel
         ]
         fill: theme.fill
     }
